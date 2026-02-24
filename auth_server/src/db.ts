@@ -10,7 +10,7 @@ db.exec(`
     CREATE TABLE IF NOT EXISTS users (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         name TEXT NOT NULL,
-        username TEXT NOT NULL UNIQUE COLLATE NOCASE,
+        username TEXT NOT NULL UNIQUE COLLATE NOCASE CHECK (username NO LIKE '%@%'),
         email TEXT NOT NULL UNIQUE COLLATE NOCASE,
         password_hash TEXT NOT NULL,
         role TEXT CHECK (role IN ('ADMIN', 'MANAGER', 'USER')) NOT NULL, 
